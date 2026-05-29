@@ -1,194 +1,158 @@
-\# ByteBank : Digital Banking Platform
+# ByteBank : Digital Banking Platform
 
-
-
-\## Overview
-
-
+## Overview
 
 ByteBank is a full-stack digital banking web application built for academic demonstration purposes. It simulates core banking operations including account management, fund transfers, loan management, authentication, payment gateway integration, and role-based access control.
 
+---
 
 
-\---
 
+## Features
 
+### Authentication & Security
 
-\## Features
+- User Registration and Login
 
+- JWT Authentication
 
+- Spring Security Integration
 
-\### Authentication \& Security
+- BCrypt Password Encryption
 
+- OTP Email Verification
 
+- Role-Based Access Control
 
-\- User Registration and Login
+- Account Lockout Protection
 
-\- JWT Authentication
+- Session Management
 
-\- Spring Security Integration
+- Audit Logging
 
-\- BCrypt Password Encryption
 
-\- OTP Email Verification
 
-\- Role-Based Access Control
+### Account Management
 
-\- Account Lockout Protection
+- Savings Accounts
 
-\- Session Management
+- Current Accounts
 
-\- Audit Logging
+- Fixed Deposit Accounts
 
+- Account Dashboard
 
+- Transaction History
 
-\### Account Management
+- PDF Statement Generation
 
 
 
-\- Savings Accounts
+### Fund Transfer System
 
-\- Current Accounts
+- Internal Transfers
 
-\- Fixed Deposit Accounts
+- Inter-bank Transfer Simulation
 
-\- Account Dashboard
+- Beneficiary Management
 
-\- Transaction History
+- OTP Verification
 
-\- PDF Statement Generation
+- Transaction Receipts
 
 
 
-\### Fund Transfer System
+### Loan Management
 
 
+- Personal Loans
 
-\- Internal Transfers
+- Home Loans
 
-\- Inter-bank Transfer Simulation
+- Education Loans
 
-\- Beneficiary Management
+- EMI Calculator
 
-\- OTP Verification
+- Loan Tracking
 
-\- Transaction Receipts
 
 
+### Payment Integration
 
-\### Loan Management
+- Razorpay Integration
 
+- Stripe Integration
 
+- Webhook Verification
 
-\- Personal Loans
+- Bill Payment Simulation
 
-\- Home Loans
 
-\- Education Loans
 
-\- EMI Calculator
+### Dashboard Modules
 
-\- Loan Tracking
+- Admin Dashboard
 
+- Manager Dashboard
 
+- Customer Dashboard
 
-\### Payment Integration
+---
 
 
 
-\- Razorpay Integration
+## Technology Stack
 
-\- Stripe Integration
+### Frontend
 
-\- Webhook Verification
+- HTML5
 
-\- Bill Payment Simulation
+- CSS3
 
+- Tailwind CSS
 
+- JavaScript (ES6+)
 
-\### Dashboard Modules
+- JSP
 
 
 
-\- Admin Dashboard
+### Backend
 
-\- Manager Dashboard
+- Java
 
-\- Customer Dashboard
+- Spring Boot
 
+- Spring MVC
 
+- Spring Security
 
-\---
 
 
+### Database
 
-\## Technology Stack
+- MySQL
 
+- Hibernate / JPA
 
 
-\### Frontend
+### Tools
 
+- Maven
 
+- Git
 
-\- HTML5
+- GitHub
 
-\- CSS3
+- Postman
 
-\- Tailwind CSS
+- VS Code
 
-\- JavaScript (ES6+)
 
-\- JSP
 
+---
 
-
-\### Backend
-
-
-
-\- Java
-
-\- Spring Boot
-
-\- Spring MVC
-
-\- Spring Security
-
-
-
-\### Database
-
-
-
-\- MySQL
-
-\- Hibernate / JPA
-
-
-
-\### Tools
-
-
-
-\- Maven
-
-\- Git
-
-\- GitHub
-
-\- Postman
-
-\- VS Code
-
-
-
-\---
-
-
-
-\## Project Structure
-
-
+## Project Structure
 
 ```text
 
@@ -230,79 +194,52 @@ bytebank/
 
 ```
 
-
-
-\---
-
-
-
-\## User Roles
+---
 
 
 
-\### Admin
+## User Roles
+
+### Admin
+
+- Manage Users
+
+- View Reports
+
+- Configure System
 
 
+### Bank Manager
 
-\- Manage Users
+- Approve Loans
 
-\- View Reports
+- Manage Customers
 
-\- Configure System
-
-
-
-\### Bank Manager
+- Monitor Accounts
 
 
+### Customer
 
-\- Approve Loans
+- Transfer Money
 
-\- Manage Customers
+- Apply for Loans
 
-\- Monitor Accounts
+- Manage Accounts
 
+---
 
+## Installation
 
-\### Customer
-
-
-
-\- Transfer Money
-
-\- Apply for Loans
-
-\- Manage Accounts
-
-
-
-\---
-
-
-
-\## Installation
-
-
-
-\### Clone Repository
-
-
+### Clone Repository
 
 ```bash
 
 git clone https://github.com/yourusername/bytebank.git
 
-
-
 cd bytebank
 
 ```
-
-
-
-\### Create Database
-
-
+### Create Database
 
 ```sql
 
@@ -310,169 +247,100 @@ CREATE DATABASE bytebank;
 
 ```
 
-
-
-\### Configure Application
-
-
+### Configure Application
 
 Update `application.properties`
-
-
 
 ```properties
 
 spring.datasource.url=jdbc:mysql://localhost:3306/bytebank
-
-
-
 spring.datasource.username=root
-
-
-
 spring.datasource.password=yourpassword
 
 ```
 
-
-
-\### Build Project
-
-
+### Build Project
 
 ```bash
-
 mvn clean install
-
 ```
 
-
-
-\### Run Project
-
-
+### Run Project
 
 ```bash
-
 mvn spring-boot:run
-
 ```
-
-
 
 Application URL:
-
-
 
 ```text
 
 http://localhost:8080
 
 ```
+---
 
-
-
-\---
-
-
-
-\## Environment Variables
-
-
+## Environment Variables
 
 ```properties
 
-JWT\_SECRET=
+JWT_SECRET=
 
+MAIL_USERNAME=
 
+MAIL_PASSWORD=
 
-MAIL\_USERNAME=
+RAZORPAY_KEY=
 
-
-
-MAIL\_PASSWORD=
-
-
-
-RAZORPAY\_KEY=
-
-
-
-RAZORPAY\_SECRET=
+RAZORPAY_SECRET=
 
 ```
+---
+
+## Security Features
+
+- JWT Authentication
+
+- BCrypt Password Hashing
+
+- OTP Verification
+
+- Role-Based Authorization
+
+- HttpOnly Cookies
+
+- Rate Limiting
+
+- Input Validation
+---
+
+
+## Future Improvements
+
+- Mobile Banking App
+
+- Docker Deployment
+
+- Microservices
+
+- AI Fraud Detection
 
 
 
-\---
+---
 
 
 
-\## Security Features
+## License
+Academic and Educational Purpose Licence[licance]
 
+---
 
+## Author
 
-\- JWT Authentication
-
-\- BCrypt Password Hashing
-
-\- OTP Verification
-
-\- Role-Based Authorization
-
-\- HttpOnly Cookies
-
-\- Rate Limiting
-
-\- Input Validation
-
-
-
-\---
-
-
-
-\## Future Improvements
-
-
-
-\- Mobile Banking App
-
-\- Docker Deployment
-
-\- Microservices
-
-\- AI Fraud Detection
-
-
-
-\---
-
-
-
-\## License
-
-
-
-Academic and Educational Purpose Only
-
-
-
-\---
-
-
-
-\## Author
-
-
-
-\*\*Mayank Prashar\*\*
-
-
+**Mayank Prashar**
 
 Project Lead | Full Stack Developer
-
-
 
 2025
 
