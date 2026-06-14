@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteBank - Digital Banking Platform</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div>
+                <div class="logo-container">
+                    <div class="logo-icon">B</div>
+                    <span class="logo-text">ByteBank</span>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li class="nav-item active"><a href="#" id="nav-dashboard"><i class="fa-solid fa-chart-pie nav-icon"></i><span>Dashboard</span></a></li>
+                        <li class="nav-item"><a href="#" id="nav-transfer"><i class="fa-solid fa-paper-plane nav-icon"></i><span>Fund Transfer</span></a></li>
+                        <li class="nav-item"><a href="#" id="nav-loans"><i class="fa-solid fa-hand-holding-dollar nav-icon"></i><span>Loans</span></a></li>
+                        <li class="nav-item"><a href="#" id="nav-bills"><i class="fa-solid fa-file-invoice-dollar nav-icon"></i><span>Bill Payments</span></a></li>
+                        <li class="nav-item"><a href="#" id="nav-history"><i class="fa-solid fa-history nav-icon"></i><span>History</span></a></li>
+                        <!-- Staff/Admin Menu Items (hidden by default) -->
+                        <li class="nav-item staff-only" style="display: none;"><a href="#" id="nav-staff-loans"><i class="fa-solid fa-tasks nav-icon"></i><span>Loan Approvals</span></a></li>
+                        <li class="nav-item admin-only" style="display: none;"><a href="#" id="nav-admin-audit"><i class="fa-solid fa-shield-halved nav-icon"></i><span>Security Audits</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="nav-links">
+                <li class="nav-item"><a href="#" id="btn-logout"><i class="fa-solid fa-right-from-bracket nav-icon"></i><span>Logout</span></a></li>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div>
+                    <h1>Welcome back, <span id="user-display-name">Mayank Prashar</span> 👋</h1>
+                    <p style="color: var(--text-secondary); margin-top: 0.25rem;">Here's what's happening with your finances today.</p>
+                </div>
+                <div class="user-profile">
+                    <button class="theme-toggle" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80" alt="Avatar" class="avatar">
+                </div>
+            </header>
+
+            <!-- Dashboard Stats Grid -->
+            <section class="dashboard-grid">
+                <div class="card">
+                    <div class="card-title">Total Balance</div>
+                    <div class="card-value" id="stat-balance">₹ 12,45,678.90</div>
+                    <div class="card-sub">Available Balance: <span id="stat-avail-balance">₹ 12,20,430.45</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Active Accounts</div>
+                    <div class="card-value" id="stat-accounts">8</div>
+                    <div class="card-sub">Savings & Fixed Deposits</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Total Transactions</div>
+                    <div class="card-value" id="stat-txns">256</div>
+                    <div class="trend-badge trend-up"><i class="fa-solid fa-arrow-up"></i> 12.5%</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Pending Approvals</div>
+                    <div class="card-value" id="stat-approvals">5</div>
+                    <div class="card-sub">Requests awaiting review</div>
+                </div>
+            </section>
+
+            <!-- Charts and Activity Details -->
+            <section class="details-grid">
+                <!-- Spend Overview Donut -->
+                <div class="card">
+                    <div class="card-title">Spending Overview</div>
+                    <div style="height: 250px; display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
+                        <canvas id="spendingChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions List -->
+                <div class="card">
+                    <div class="card-title">Recent Transactions</div>
+                    <div class="txn-list" id="recent-txn-list">
+                        <!-- Simulated Items -->
+                        <div class="txn-item">
+                            <div class="txn-details">
+                                <div class="txn-icon txn-outflow"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+                                <div>
+                                    <div style="font-weight: 600;">Transfer to RAHUL</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-secondary);">May 20, 2026 - 10:30 AM</div>
+                                </div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--danger);">- ₹ 25,000.00</div>
+                        </div>
+                        <div class="txn-item">
+                            <div class="txn-details">
+                                <div class="txn-icon txn-inflow"><i class="fa-solid fa-arrow-down-to-bracket"></i></div>
+                                <div>
+                                    <div style="font-weight: 600;">Salary Credit</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-secondary);">May 20, 2026 - 09:00 AM</div>
+                                </div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--accent);">+ ₹ 75,000.00</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Fund Transfer Modal -->
+    <div class="modal-overlay" id="modal-transfer">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>New Fund Transfer</h3>
+                <button class="modal-close" onclick="closeModal('modal-transfer')">&times;</button>
+            </div>
+            <form id="form-transfer">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">From Account</label>
+                    <select id="transfer-from" style="width: 100%; padding: 0.75rem; border-radius: 12px; background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color);"></select>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">To Account Number</label>
+                    <input type="text" id="transfer-to" required placeholder="Enter destination account number" style="width: 100%; padding: 0.75rem; border-radius: 12px; background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color);">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Amount (₹)</label>
+                    <input type="number" id="transfer-amount" required placeholder="0.00" style="width: 100%; padding: 0.75rem; border-radius: 12px; background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color);">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Initiate Transfer</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
