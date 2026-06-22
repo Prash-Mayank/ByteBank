@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ByteBank : Digital Banking Platform
 
 ## Overview
@@ -461,5 +460,3 @@ throughout) is implemented module-by-module following the 18-week phased plan be
 
 ## License
 
-Academic project — for educational/portfolio purposes.
->>>>>>> 093ee2d (ByteBank V2 project stucture)
