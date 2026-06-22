@@ -1,5 +1,6 @@
 package com.bytebank.service;
 
+<<<<<<< HEAD
 import com.bytebank.model.Account;
 import com.bytebank.model.User;
 import com.bytebank.repository.AccountRepository;
@@ -58,4 +59,21 @@ public class AccountService {
     public Account save(Account account) {
         return accountRepository.save(account);
     }
+=======
+import com.bytebank.repository.AccountRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+/**
+ * Account CRUD, 12-digit account number generation, mini statements,
+ * status management (Active/Frozen/Closed), and interest crediting.
+ */
+@Service
+@RequiredArgsConstructor
+public class AccountService {
+
+    private final AccountRepository accountRepository;
+
+    // TODO: openAccount(), generateAccountNumber(), getMiniStatement(), freeze(), close()
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

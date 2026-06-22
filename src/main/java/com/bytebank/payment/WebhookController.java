@@ -1,5 +1,6 @@
 package com.bytebank.payment;
 
+<<<<<<< HEAD
 import com.bytebank.model.Payment;
 import com.bytebank.repository.PaymentRepository;
 import com.bytebank.service.TransactionService;
@@ -58,5 +59,28 @@ public class WebhookController {
             return ResponseEntity.badRequest().body("Webhook verification failed: " + e.getMessage());
         }
         return ResponseEntity.badRequest().body("Signature match failed.");
+=======
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/** Receives and verifies Razorpay / Stripe webhook callbacks. */
+@RestController
+@RequestMapping("/api/webhooks")
+@RequiredArgsConstructor
+public class WebhookController {
+
+    private final RazorpayService razorpayService;
+
+    @PostMapping("/razorpay")
+    public ResponseEntity<Void> handleRazorpayWebhook(@RequestBody String payload,
+                                                        @RequestHeader("X-Razorpay-Signature") String signature) {
+        // TODO: verify signature, update Payment status, trigger downstream actions
+        return ResponseEntity.ok().build();
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
     }
 }

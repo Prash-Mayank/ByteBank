@@ -1,5 +1,6 @@
 package com.bytebank.service;
 
+<<<<<<< HEAD
 import com.bytebank.model.Account;
 import com.bytebank.model.EmiSchedule;
 import com.bytebank.model.Loan;
@@ -109,4 +110,30 @@ public class LoanService {
         emiScheduleRepository.saveAll(schedules);
         return loan;
     }
+=======
+import com.bytebank.repository.LoanRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+
+/**
+ * Loan eligibility checks, EMI amortisation calculation, approval/rejection flow,
+ * disbursement, and prepayment recalculation.
+ */
+@Service
+@RequiredArgsConstructor
+public class LoanService {
+
+    private final LoanRepository loanRepository;
+
+    public BigDecimal calculateEmi(BigDecimal principal, BigDecimal annualRate, int tenureMonths) {
+        // Standard reducing-balance EMI formula: P * r * (1+r)^n / ((1+r)^n - 1)
+        BigDecimal monthlyRate = annualRate.divide(BigDecimal.valueOf(1200));
+        // TODO: implement full formula with BigDecimal precision/rounding
+        return BigDecimal.ZERO;
+    }
+
+    // TODO: checkEligibility(), approve(), reject(), disburse(), prepay()
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

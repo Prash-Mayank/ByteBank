@@ -1,5 +1,6 @@
 package com.bytebank.controller;
 
+<<<<<<< HEAD
 import com.bytebank.model.User;
 import com.bytebank.security.JwtUtil;
 import com.bytebank.service.UserService;
@@ -92,4 +93,16 @@ public class AuthController {
         response.addCookie(cookie);
         return ResponseEntity.ok(Map.of("message", "Logged out successfully."));
     }
+=======
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+/** Registration, login, OTP verification, logout, password reset. */
+@RestController
+@RequestMapping("/api/auth")
+@RequiredArgsConstructor
+public class AuthController {
+
+    // TODO: POST /register, POST /login, POST /verify-otp, POST /logout, POST /forgot-password
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

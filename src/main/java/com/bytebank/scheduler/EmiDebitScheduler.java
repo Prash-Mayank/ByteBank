@@ -1,5 +1,6 @@
 package com.bytebank.scheduler;
 
+<<<<<<< HEAD
 import com.bytebank.model.Account;
 import com.bytebank.model.EmiSchedule;
 import com.bytebank.model.Transaction;
@@ -79,5 +80,22 @@ public class EmiDebitScheduler {
                 transactionRepository.save(txn);
             }
         }
+=======
+import com.bytebank.repository.EmiScheduleRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+/** Auto-debits monthly EMIs from the linked Savings account on the due date. */
+@Component
+@RequiredArgsConstructor
+public class EmiDebitScheduler {
+
+    private final EmiScheduleRepository emiScheduleRepository;
+
+    @Scheduled(cron = "0 0 6 * * *") // daily at 06:00
+    public void debitDueEmis() {
+        // TODO: find due, unpaid EMIs, debit account, mark paid, recalc remaining balance
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
     }
 }

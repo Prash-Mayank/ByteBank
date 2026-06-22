@@ -1,13 +1,19 @@
 package com.bytebank.security;
 
+<<<<<<< HEAD
 import com.bytebank.model.User;
 import com.bytebank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+=======
+import com.bytebank.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import java.util.Collections;
 
 @Service
@@ -30,5 +36,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 user.getPasswordHash(),
                 Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole()))
         );
+=======
+
+/** Loads a User by System ID for Spring Security authentication. */
+@Service
+@RequiredArgsConstructor
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+    private final UserRepository userRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String systemId) throws UsernameNotFoundException {
+        // TODO: map com.bytebank.model.User -> org.springframework.security.core.userdetails.User
+        throw new UsernameNotFoundException("Not yet implemented: " + systemId);
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
     }
 }

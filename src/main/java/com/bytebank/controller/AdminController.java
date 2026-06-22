@@ -1,5 +1,6 @@
 package com.bytebank.controller;
 
+<<<<<<< HEAD
 import com.bytebank.model.AuditLog;
 import com.bytebank.model.User;
 import com.bytebank.repository.AuditLogRepository;
@@ -79,4 +80,16 @@ public class AdminController {
             return ResponseEntity.status(500).body(Map.of("message", "Database backup failed: " + e.getMessage()));
         }
     }
+=======
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+/** System stats, user management, interest rate config, reports, fraud alert queue. */
+@RestController
+@RequestMapping("/admin")
+@RequiredArgsConstructor
+public class AdminController {
+
+    // TODO: GET /stats, POST /users, PATCH /config/rates, GET /reports, GET /fraud-alerts
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

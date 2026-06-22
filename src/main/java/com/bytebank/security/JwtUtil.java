@@ -1,5 +1,6 @@
 package com.bytebank.security;
 
+<<<<<<< HEAD
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -67,4 +68,40 @@ public class JwtUtil {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
+=======
+import com.bytebank.config.JwtConfig;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
+
+/** Issues and validates JWTs (1-hour expiry, HttpOnly cookie delivery). */
+@Component
+@RequiredArgsConstructor
+public class JwtUtil {
+
+    private final JwtConfig jwtConfig;
+
+    private SecretKey key() {
+        return Keys.hmacShaKeyFor(jwtConfig.getSecret().getBytes(StandardCharsets.UTF_8));
+    }
+
+    public String generateToken(String systemId, String role) {
+        Date now = new Date();
+        Date expiry = new Date(now.getTime() + jwtConfig.getExpirationMs());
+        return Jwts.builder()
+                .subject(systemId)
+                .claim("role", role)
+                .issuedAt(now)
+                .expiration(expiry)
+                .signWith(key())
+                .compact();
+    }
+
+    // TODO: validateToken(), extractSystemId(), extractRole()
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

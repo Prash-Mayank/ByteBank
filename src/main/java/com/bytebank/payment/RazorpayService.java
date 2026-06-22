@@ -1,5 +1,6 @@
 package com.bytebank.payment;
 
+<<<<<<< HEAD
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import org.json.JSONObject;
@@ -55,4 +56,23 @@ public class RazorpayService {
             return false;
         }
     }
+=======
+import com.razorpay.RazorpayClient;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+/** Creates Razorpay test-mode orders and verifies webhook signatures. */
+@Service
+@RequiredArgsConstructor
+public class RazorpayService {
+
+    @Value("${razorpay.key-id}")
+    private String keyId;
+
+    @Value("${razorpay.key-secret}")
+    private String keySecret;
+
+    // TODO: createOrder(BigDecimal amount), verifyWebhookSignature(payload, signature, secret)
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

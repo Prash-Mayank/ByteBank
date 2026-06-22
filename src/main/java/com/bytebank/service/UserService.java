@@ -1,6 +1,7 @@
 package com.bytebank.service;
 
 import com.bytebank.model.User;
+<<<<<<< HEAD
 import com.bytebank.model.OtpLog;
 import com.bytebank.repository.UserRepository;
 import com.bytebank.repository.OtpLogRepository;
@@ -78,4 +79,32 @@ public class UserService {
         }
         return false;
     }
+=======
+import com.bytebank.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.security.SecureRandom;
+
+/**
+ * Handles registration, System ID generation, password hashing, and lockout logic.
+ * System ID pattern: FIRSTNAME + 6 DIGITS (SecureRandom) + ROLE CODE.
+ */
+@Service
+@RequiredArgsConstructor
+public class UserService {
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final SecureRandom secureRandom = new SecureRandom();
+
+    public String generateSystemId(String firstName, User.Role role) {
+        int sixDigits = 100000 + secureRandom.nextInt(900000);
+        return firstName.toUpperCase() + sixDigits + role.name();
+    }
+
+    // TODO: register(), login attempt tracking, lockout after 5 failures (15 min),
+    // password reset flow via OTP.
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

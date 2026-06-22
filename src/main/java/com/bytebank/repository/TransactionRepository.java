@@ -1,5 +1,6 @@
 package com.bytebank.repository;
 
+<<<<<<< HEAD
 import com.bytebank.model.Account;
 import com.bytebank.model.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,4 +22,13 @@ public interface TransactionRepository extends JpaRepository<Transaction, String
 
     @Query("SELECT COUNT(t) FROM Transaction t WHERE t.timestamp >= :date")
     long countTransactionsSince(@Param("date") LocalDateTime date);
+=======
+import com.bytebank.model.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+    // TODO: add custom query methods as needed
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

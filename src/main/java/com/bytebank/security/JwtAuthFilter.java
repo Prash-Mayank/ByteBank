@@ -2,6 +2,7 @@ package com.bytebank.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+<<<<<<< HEAD
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -63,6 +64,27 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             }
         }
 
+=======
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+
+/** Reads the JWT from the HttpOnly cookie on each request and sets the SecurityContext. */
+@Component
+@RequiredArgsConstructor
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private final JwtUtil jwtUtil;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                     FilterChain filterChain) throws ServletException, IOException {
+        // TODO: extract "jwt" cookie, validate, populate Authentication in SecurityContextHolder
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
         filterChain.doFilter(request, response);
     }
 }

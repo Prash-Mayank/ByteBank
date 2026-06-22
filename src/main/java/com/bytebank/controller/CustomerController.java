@@ -1,5 +1,6 @@
 package com.bytebank.controller;
 
+<<<<<<< HEAD
 import com.bytebank.model.Account;
 import com.bytebank.model.Loan;
 import com.bytebank.model.Transaction;
@@ -101,4 +102,17 @@ public class CustomerController {
         Loan loan = loanService.applyForLoan(user, type, amount, tenure, rate);
         return ResponseEntity.ok(loan);
     }
+=======
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+/** Dashboard, transfers, loan application, bill pay, statements, spending insights. */
+@RestController
+@RequestMapping("/customer")
+@RequiredArgsConstructor
+public class CustomerController {
+
+    // TODO: GET /dashboard, POST /transfer, POST /loans/apply, GET /statement,
+    // GET /spending-insights, POST /fixed-deposit
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

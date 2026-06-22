@@ -1,5 +1,6 @@
 package com.bytebank.service;
 
+<<<<<<< HEAD
 import com.bytebank.model.Account;
 import com.bytebank.model.AuditLog;
 import com.bytebank.model.Transaction;
@@ -110,5 +111,25 @@ public class TransactionService {
         auditLogRepository.save(log);
 
         return transaction;
+=======
+import com.bytebank.repository.TransactionRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Internal/NEFT transfers, transfer limit checks (₹1,00,000/txn, ₹2,00,000/day),
+ * beneficiary validation, and atomic rollback on failure.
+ */
+@Service
+@RequiredArgsConstructor
+public class TransactionService {
+
+    private final TransactionRepository transactionRepository;
+
+    @Transactional
+    public void transfer(/* TODO: TransferRequest dto */) {
+        // TODO: validate limits, debit/credit accounts, persist transaction, trigger AI categorisation
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
     }
 }

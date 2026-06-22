@@ -1,5 +1,6 @@
 package com.bytebank.controller;
 
+<<<<<<< HEAD
 import com.bytebank.model.Loan;
 import com.bytebank.model.User;
 import com.bytebank.repository.LoanRepository;
@@ -70,4 +71,17 @@ public class ManagerController {
         }
         return ResponseEntity.ok(user);
     }
+=======
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+/** Loan approval queue, customer lookup, account freeze, beneficiary approval. */
+@RestController
+@RequestMapping("/manager")
+@RequiredArgsConstructor
+public class ManagerController {
+
+    // TODO: GET /loans/pending, POST /loans/{id}/decision, GET /customers/search,
+    // PATCH /accounts/{accNo}/freeze, POST /beneficiaries/{id}/approve
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

@@ -1,5 +1,6 @@
 package com.bytebank.payment;
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
@@ -27,4 +28,13 @@ public class StripeService {
             return response;
         }
     }
+=======
+import org.springframework.stereotype.Service;
+
+/** Alternative test-mode payment gateway (Stripe) for bill payments / checkout. */
+@Service
+public class StripeService {
+
+    // TODO: createPaymentIntent(), verifyWebhook()
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

@@ -1,5 +1,6 @@
 package com.bytebank.scheduler;
 
+<<<<<<< HEAD
 import com.bytebank.model.Account;
 import com.bytebank.model.Transaction;
 import com.bytebank.repository.AccountRepository;
@@ -56,5 +57,27 @@ public class InterestCreditScheduler {
                 }
             }
         }
+=======
+import com.bytebank.repository.AccountRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+/** Credits Savings interest monthly and Fixed Deposit interest on maturity. */
+@Component
+@RequiredArgsConstructor
+public class InterestCreditScheduler {
+
+    private final AccountRepository accountRepository;
+
+    @Scheduled(cron = "0 0 1 1 * *") // 1st of each month at 01:00
+    public void creditSavingsInterest() {
+        // TODO: compute and credit interest for all SAVINGS accounts
+    }
+
+    @Scheduled(cron = "0 0 2 * * *") // daily at 02:00
+    public void processMaturedFds() {
+        // TODO: find FDs reaching maturity_date today, credit principal + interest
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
     }
 }

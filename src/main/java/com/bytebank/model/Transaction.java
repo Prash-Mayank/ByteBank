@@ -1,6 +1,7 @@
 package com.bytebank.model;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -38,4 +39,46 @@ public class Transaction {
 
     @Column(name = "gateway_ref", length = 100)
     private String gatewayRef;
+=======
+import lombok.Data;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+/**
+ * transactions table — all fund movements, AI-categorised after save.
+ */
+@Entity
+@Table(name = "transactions")
+@Data
+public class Transaction {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "txn_id")
+    private Long txnId;
+
+    @Column(name = "from_acc")
+    private String fromAccount;
+
+    @Column(name = "to_acc")
+    private String toAccount;
+
+    private BigDecimal amount;
+
+    @Enumerated(EnumType.STRING)
+    private TxnType type; // INTERNAL, NEFT, BILL_PAY, LOAN_DISBURSAL, EMI_DEBIT
+
+    @Enumerated(EnumType.STRING)
+    private TxnStatus status; // PENDING, SUCCESS, FAILED
+
+    private LocalDateTime timestamp;
+
+    @Column(name = "gateway_ref")
+    private String gatewayRef;
+
+    private String category; // AI-assigned: Food, Utilities, Transfer, Loan, etc.
+
+    public enum TxnType { INTERNAL, NEFT, BILL_PAY, LOAN_DISBURSAL, EMI_DEBIT }
+    public enum TxnStatus { PENDING, SUCCESS, FAILED }
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }

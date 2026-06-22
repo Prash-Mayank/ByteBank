@@ -1,6 +1,7 @@
 package com.bytebank.model;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -37,4 +38,43 @@ public class Payment {
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+=======
+import lombok.Data;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+/** payments table — Razorpay / Stripe gateway payment records. */
+@Entity
+@Table(name = "payments")
+@Data
+public class Payment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pay_id")
+    private Long payId;
+
+    @Column(name = "system_id", nullable = false)
+    private String systemId;
+
+    private BigDecimal amount;
+
+    @Enumerated(EnumType.STRING)
+    private Gateway gateway; // RAZORPAY, STRIPE
+
+    @Column(name = "order_id")
+    private String orderId;
+
+    @Column(name = "payment_id")
+    private String paymentId;
+
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus status; // CREATED, PAID, FAILED
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    public enum Gateway { RAZORPAY, STRIPE }
+    public enum PaymentStatus { CREATED, PAID, FAILED }
+>>>>>>> 093ee2d (ByteBank V2 project stucture)
 }
